@@ -1,0 +1,19 @@
+{
+    "name": "ocs/spklib",
+    "description": "SPK Library Method",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ocs\\Spklib\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ajenkris Kungkung",
+            "email": "kristt26@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
