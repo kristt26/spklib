@@ -1,16 +1,23 @@
 <?php
+
 namespace ocs\spklibs;
 
-class Wplib
+class Moora
 {
     protected $limit;
     protected $kriteria;
     protected $alternatif;
     public $bobot;
-    public $normalisasibobot;
+    public $matriksKeputusan;
+    public $matriksNormalisasi;
+    public $nilaiOptimasi;
+    public $ranking;
+
     public $vector;
     public $preferensi;
-    public $ranking;
+
+
+    public $normalisasibobot;
 
     public function __construct($kriteria, $alternatif, $limit)
     {
