@@ -2,7 +2,7 @@
 
 require "Wplib.php";
 
-use ocs\spklibs\Wplib as wp;
+use ocs\spklib\Wplib as wp;
 
 $kriteria = [
     [

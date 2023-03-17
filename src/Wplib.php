@@ -1,5 +1,5 @@
 <?php
-namespace ocs\spklibs;
+namespace ocs\spklib;
 
 class Wplib
 {
