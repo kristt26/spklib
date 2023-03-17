@@ -7,7 +7,6 @@ class Moora
     protected $limit;
     protected $kriteria;
     protected $alternatif;
-    public $bobot;
     public $matriksKeputusan;
     public $matriksNormalisasi;
     public $nilaiOptimasi;
@@ -24,39 +23,44 @@ class Moora
         $this->limit = $limit;
         $this->kriteria = $kriteria;
         $this->alternatif = $alternatif;
-        $this->bobot = $this->bobot($this->kriteria);
-        $this->normalisasibobot = $this->normalisasi($this->bobot);
-        $this->vector = $this->normalisasiAlternatif($this->alternatif, $this->normalisasibobot);
+        $this->matriksKeputusan = $this->setMatriksKeputusan($this->alternatif);
+        $this->matriksNormalisasi = $this->setMatriksNormalisasi($this->alternatif, $this->kriteria);
         $this->preferensi = $this->bobotPreferensi($this->vector);
         $this->ranking = $this->rank($this->preferensi);
     }
 
-    private function bobot(array $kriteria): array
+    private function setMatriksKeputusan(array $alternatifs): array
     {
-        $dataBobot = [];
-        foreach ($kriteria as $key => $value) {
-            $item = [
-                'kode' => $value['kode'],
-                'bobot' => $value['bobot'],
-                'type' => $value['type'],
-            ];
-            array_push($dataBobot, $item);
+        $data = [];
+        foreach ($alternatifs as $key => $alternatif) {
+            $item = [];
+            foreach ($alternatif['nilai'] as $key1 => $value) {
+                array_push($item, $value['bobot']);
+            }
+            array_push($data, $item);
         }
-        return $dataBobot;
+        return $data;
     }
 
-    private function normalisasi(array $bobot): array
+    private function setMatriksNormalisasi(array $alternatifs, array $kriterias): array
     {
-        $sum = 0;
-        foreach ($bobot as $key => $value) {
-            $sum += floatval($value['bobot']);
+        $data = [];
+        foreach ($alternatifs as $keyAlternatif => $alternatif) {
+            foreach ($kriterias as $keyKriteria => $kriteria) {
+            }
         }
+        return $data;
+    }
 
-        foreach ($bobot as $key => $value) {
-            $bobot[$key]['bobot'] = floatval($value['bobot']) / $sum;
+    private function getSum($kode): int
+    {
+        $item = 0;
+        foreach ($this->alternatif as $key1 => $alternatif) {
+            foreach ($alternatif['nilai'] as $key2 => $value) {
+                if ($value['kode'] == $kode) $item += $value['bobot'];
+            }
         }
-
-        return $bobot;
+        return $item;
     }
 
     private function normalisasiAlternatif(array $alternatif, array $bobot): array
