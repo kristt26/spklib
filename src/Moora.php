@@ -5,8 +5,8 @@ namespace ocs\spklib;
 class Moora
 {
     protected $limit;
-    protected $kriteria;
-    protected $alternatif;
+    public $kriteria;
+    public $alternatif;
     public $matriksKeputusan;
     public $matriksNormalisasi;
     public $nilaiOptimasi;
@@ -24,7 +24,7 @@ class Moora
         $this->kriteria = $kriteria;
         $this->alternatif = $alternatif;
         $this->matriksKeputusan = $this->setMatriksKeputusan($this->alternatif);
-        $this->matriksNormalisasi = $this->setMatriksNormalisasi($this->alternatif, $this->kriteria);
+        $this->matriksNormalisasi = $this->setMatriksNormalisasi();
         $this->nilaiOptimasi = $this->setNilaiOptimasi();
         $this->ranking = $this->rank($this->nilaiOptimasi);
     }
@@ -42,14 +42,14 @@ class Moora
         return $data;
     }
 
-    private function setMatriksNormalisasi(array $alternatifs, array $kriterias): array
+    private function setMatriksNormalisasi(): array
     {
         $data = [];
-        foreach ($alternatifs as $keyAlternatif => $alternatif) {
+        foreach ($this->alternatif as $keyAlternatif => $alternatif) {
             $nilaiAlter = [];
             foreach ($alternatif['nilai'] as $keyNilai => $nilai) {
                 $item = $nilai['bobot']/sqrt($this->getSum($nilai['kode']));
-                $alternatif[$keyAlternatif]['nilai'][$keyNilai]['normalMatriks']= $item;
+                $this->alternatif[$keyAlternatif]['nilai'][$keyNilai]['normalMatriks']= $item;
                 array_push($nilaiAlter, $item);
             }
             array_push($data, $nilaiAlter);
@@ -74,9 +74,10 @@ class Moora
         foreach ($this->alternatif as $keyAlternatif => $alternatif) {
             $item = 0;
             foreach ($alternatif['nilai'] as $key => $nilai) {
-                $item += ($nilai['bobot'] * $this->cekJenis($nilai['kode']));
+                $item += ($nilai['normalMatriks'] * $this->cekJenis($nilai['kode']));
             }
             array_push($data, $item);
+            $this->alternatif[$keyAlternatif]['preferensi'] = $item;
         }
         return $data;
     }
@@ -91,10 +92,15 @@ class Moora
     private function rank(array $data): array
     {
         usort($data, function ($a, $b) {
+            $retval = $b <=> $a;
+            return $retval;
+        });
+        usort($this->alternatif, function ($a, $b) {
             $retval = $b['preferensi'] <=> $a['preferensi'];
             return $retval;
         });
+        $result = array_slice($data, 0, (int)$this->limit);
 
-        return $this->limit > 0 ? array_slice($data, 0, $this->limit) : $data;
+        return $result;
     }
 }
