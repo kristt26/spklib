@@ -247,5 +247,4 @@ $alternatif = [
 ];
 
 $a = new PM($kriteria, $alternatif, 0, true);
-// $b = $a;
 echo json_encode($a->rank);
