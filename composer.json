@@ -14,7 +14,6 @@
             "email": "kristt26@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
-    "prefer-stable": true,
+ 
     "require": {}
 }
