@@ -26,6 +26,7 @@ class ProfileMatching
 
     private function getBobotGap(float $nilai): float
     {
+        
         $data = [
             [
                 'gap' => 0,
