@@ -7,17 +7,19 @@ namespace ocs\spklib;
 class ProfileMatching
 {
     protected $limit;
+    protected $rounding;
     protected $sf;
     protected $kriteria;
     public $alternatif;
     public $nilaiAkhir;
     public $rank;
 
-    public function __construct($kriteria, $alternatif, $limit, $sf)
+    public function __construct($kriteria, $alternatif, $limit, $sf, $rounding)
     {
        $this->kriteria = $kriteria;
        $this->alternatif = $alternatif;
        $this->limit = $limit;
+       $this->rounding = $rounding;
        $this->sf = $sf;
        $this->setMapGap();
        $this->nilaiAkhir = $this->setNilaiAkhir();
@@ -158,6 +160,10 @@ class ProfileMatching
             $retval = $b['nilaiAkhir'] <=> $a['nilaiAkhir'];
             return $retval;
         });
+
+        for ($i=0; $i < count($data) ; $i++) { 
+            $data[$i]['nilaiAkhir'] = round($data[$i]['nilaiAkhir'], $this->rounding);
+        }
 
         return $this->limit > 0 ? array_slice($data, 0, $this->limit) : $data;
     }
