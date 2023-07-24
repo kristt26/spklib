@@ -22,7 +22,8 @@ class ProfileMatchingNew
         $this->rounding = $rounding;
         $this->sf = $sf;
         $this->setMapGap();
-        $this->nilaiAkhir = $this->setNilaiAkhir();
+        $this->nilaiAkhir = [];
+        $this->nilaiAkhir = $this->alternatif;
         $this->rank = $this->setRank($this->nilaiAkhir);
     }
 
@@ -95,7 +96,7 @@ class ProfileMatchingNew
                                         $this->alternatif[$keyAlt]['nilai'][$keyNil]['sub'][$keySub]['gap'] = $sub['nilai'] - $subKriteria['profileKriteria'];
                                         $mapGap = $this->getBobotGap($sub['nilai'] - $subKriteria['profileKriteria']);
                                         $this->alternatif[$keyAlt]['nilai'][$keyNil]['sub'][$keySub]['mapGap'] = $mapGap;
-                                        // $nilaiSf += $this->getBobotGap($sub['nilai'] - $kriteria['profileKriteria']) * $subKriteria['bobot'];
+                                        $nilaiSf += $this->getBobotGap($sub['nilai'] - $kriteria['profileKriteria']) * $subKriteria['bobot'];
                                         if ($subKriteria['status'] == 'CF') {
                                             $countCf += 1;
                                             $nilaiCf += $mapGap;
@@ -131,19 +132,19 @@ class ProfileMatchingNew
 
     private function setNilaiAkhir(): array
     {
-        $data = [];
+        // $data = [];
         // if ($this->sf) {
         //     foreach ($this->alternatif as $keyAlt => $alternatif) {
         //         $nilai1 = 0;
         //         foreach ($alternatif['nilai'] as $keyNil => $nilai) {
         //             foreach ($this->kriteria as $key => $kriteria) {
+        //                 array_push($data, ['nama' => $this->alternatif[$keyAlt]['nama'], 'nilaiAkhir' => $nilai1 / count($this->kriteria)]);
         //                 if ($nilai['code'] == $kriteria['code']) {
         //                     $hitung = ($nilai['sf'] * $kriteria['bobot']);
         //                     $nilai1 += $hitung;
         //                 }
         //             }
         //         }
-        //         array_push($data, ['nama' => $this->alternatif[$keyAlt]['nama'], 'nilaiAkhir' => $nilai1 / count($this->kriteria)]);
         //     }
         // } else {
         //     foreach ($this->alternatif as $keyAlt => $alternatif) {
@@ -159,7 +160,7 @@ class ProfileMatchingNew
         //         array_push($data, $item);
         //     }
         // }
-        return $data;
+        // return $data;
     }
 
     private function setRank(array $data): array
