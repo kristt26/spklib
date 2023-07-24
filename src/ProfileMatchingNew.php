@@ -96,7 +96,7 @@ class ProfileMatchingNew
                                         $this->alternatif[$keyAlt]['nilai'][$keyNil]['sub'][$keySub]['gap'] = $sub['nilai'] - $subKriteria['profileKriteria'];
                                         $mapGap = $this->getBobotGap($sub['nilai'] - $subKriteria['profileKriteria']);
                                         $this->alternatif[$keyAlt]['nilai'][$keyNil]['sub'][$keySub]['mapGap'] = $mapGap;
-                                        $nilaiSf += $this->getBobotGap($sub['nilai'] - $kriteria['profileKriteria']) * $subKriteria['bobot'];
+                                        // $nilaiSf += $this->getBobotGap($sub['nilai'] - $kriteria['profileKriteria']) * $subKriteria['bobot'];
                                         if ($subKriteria['status'] == 'CF') {
                                             $countCf += 1;
                                             $nilaiCf += $mapGap;
