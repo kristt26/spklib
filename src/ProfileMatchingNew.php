@@ -130,38 +130,38 @@ class ProfileMatchingNew
         }
     }
 
-    private function setNilaiAkhir(): array
-    {
-        // $data = [];
-        // if ($this->sf) {
-        //     foreach ($this->alternatif as $keyAlt => $alternatif) {
-        //         $nilai1 = 0;
-        //         foreach ($alternatif['nilai'] as $keyNil => $nilai) {
-        //             foreach ($this->kriteria as $key => $kriteria) {
-        //                 array_push($data, ['nama' => $this->alternatif[$keyAlt]['nama'], 'nilaiAkhir' => $nilai1 / count($this->kriteria)]);
-        //                 if ($nilai['code'] == $kriteria['code']) {
-        //                     $hitung = ($nilai['sf'] * $kriteria['bobot']);
-        //                     $nilai1 += $hitung;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // } else {
-        //     foreach ($this->alternatif as $keyAlt => $alternatif) {
-        //         $nilai = 0;
-        //         foreach ($alternatif['nilai'] as $keyNil => $nilai) {
-        //             foreach ($this->kriteria as $key => $kriteria) {
-        //                 if ($nilai['code'] == $kriteria['code']) {
-        //                     $nilai += ($nilai['mapGap'] * $kriteria['bobot']);
-        //                 }
-        //             }
-        //         }
-        //         $item = ['nama' => $alternatif['nama'], 'nilaiAkhir' => $nilai];
-        //         array_push($data, $item);
-        //     }
-        // }
-        // return $data;
-    }
+    // private function setNilaiAkhir(): array
+    // {
+    //     $data = [];
+    //     if ($this->sf) {
+    //         foreach ($this->alternatif as $keyAlt => $alternatif) {
+    //             $nilai1 = 0;
+    //             foreach ($alternatif['nilai'] as $keyNil => $nilai) {
+    //                 foreach ($this->kriteria as $key => $kriteria) {
+    //                     array_push($data, ['nama' => $this->alternatif[$keyAlt]['nama'], 'nilaiAkhir' => $nilai1 / count($this->kriteria)]);
+    //                     if ($nilai['code'] == $kriteria['code']) {
+    //                         $hitung = ($nilai['sf'] * $kriteria['bobot']);
+    //                         $nilai1 += $hitung;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     } else {
+    //         foreach ($this->alternatif as $keyAlt => $alternatif) {
+    //             $nilai = 0;
+    //             foreach ($alternatif['nilai'] as $keyNil => $nilai) {
+    //                 foreach ($this->kriteria as $key => $kriteria) {
+    //                     if ($nilai['code'] == $kriteria['code']) {
+    //                         $nilai += ($nilai['mapGap'] * $kriteria['bobot']);
+    //                     }
+    //                 }
+    //             }
+    //             $item = ['nama' => $alternatif['nama'], 'nilaiAkhir' => $nilai];
+    //             array_push($data, $item);
+    //         }
+    //     }
+    //     return $data;
+    // }
 
     private function setRank(array $data): array
     {
