@@ -74,7 +74,7 @@ class Moora
         foreach ($this->alternatif as $keyAlternatif => $alternatif) {
             $item = 0;
             foreach ($alternatif['nilai'] as $key => $nilai) {
-                $item += ($nilai['normalMatriks'] * $this->cekJenis($nilai['kode']));
+                $item += ($nilai['normalMatriks'] * ($this->cekJenis($nilai['kode'])/100));
             }
             array_push($data, $item);
             $this->alternatif[$keyAlternatif]['preferensi'] = $item;
