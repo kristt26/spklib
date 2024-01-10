@@ -100,6 +100,9 @@ class Moora
             return $retval;
         });
         $result = array_slice($data, 0, (int)$this->limit);
+        foreach ($this->alternatif as $key => $value) {
+            $this->alternatif[$key]['preferensi'] = round($value['preferensi'],5);
+        }
 
         return $result;
     }
