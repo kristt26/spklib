@@ -1,5 +1,5 @@
 <?php
-namespace ocs\spklib;
+namespace ajn\dss_library;
 
 class Wplib
 {
