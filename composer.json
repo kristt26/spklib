@@ -1,19 +1,19 @@
 {
-    "name": "ocs/spklib",
-    "description": "SPK Library Method",
+    "name": "ajn/dss-library",
+    "description": "Library for DSS system",
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "ocs\\spklib\\": "src/"
-        }
-    },
     "authors": [
         {
-            "name": "Ajenkris Kungkung",
+            "name": "Ajenkris Yanto Kungkung",
             "email": "kristt26@gmail.com"
         }
     ],
- 
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "ajn\\dss-library\\": "src/"
+        }
+    },
     "require": {}
 }
