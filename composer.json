@@ -12,7 +12,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "ajn\\dss-library\\": "src/"
+            "ajn\\dss_library\\": "src/"
         }
     },
     "require": {}
