@@ -8,14 +8,7 @@ class Edas
     public $kriteria;
     public $alternatif;
     public $matriksKeputusan;
-    public $matriksNormalisasi;
-    public $nilaiOptimasi;
     public $ranking;
-
-    public $vector;
-    public $preferensi;
-    public $normalisasibobot;
-
     public $AV;
     public $PDA;
     public $NDA;
