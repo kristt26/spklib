@@ -1,8 +1,8 @@
 <?php
 
-require "../src/Smart.php";
+require "../src/Edas.php";
 
-use ajn\dss_library\Smart as sm;
+use ajn\dss_library\Edas as edas;
 
 $kriteria = [
     [
@@ -112,6 +112,6 @@ $alternatif = [
     ]
 ];
 
-$a = new sm($kriteria, $alternatif, 0);
+$a = new edas($kriteria, $alternatif, 0);
 $b = $a->ranking;
 echo json_encode($a);
