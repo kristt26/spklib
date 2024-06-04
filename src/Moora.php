@@ -79,7 +79,7 @@ class Moora
             foreach ($alternatif['nilai'] as $key => $nilai) {
                 $setNilai = ($nilai['normalMatriks'] * ($this->cekJenis($nilai['kode'])/100));
                 $item += $setNilai;
-                $set[] = $setNilai>0 ? $setNilai*(-1): $setNilai;
+                $set[] = $setNilai<0 ? $setNilai*(-1): $setNilai;
             }
             $this->perkalianBobot[] = $set;
             array_push($data, $item);
