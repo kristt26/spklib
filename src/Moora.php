@@ -10,6 +10,7 @@ class Moora
     public $matriksKeputusan;
     public $matriksNormalisasi;
     public $nilaiOptimasi;
+    public $perkalianBobot;
     public $ranking;
 
     public $vector;
@@ -71,11 +72,16 @@ class Moora
     private function setNilaiOptimasi(): array
     {
         $data = [];
+        $this->perkalianBobot=[];
         foreach ($this->alternatif as $keyAlternatif => $alternatif) {
             $item = 0;
+            $set = [];
             foreach ($alternatif['nilai'] as $key => $nilai) {
-                $item += ($nilai['normalMatriks'] * ($this->cekJenis($nilai['kode'])/100));
+                $setNilai = ($nilai['normalMatriks'] * ($this->cekJenis($nilai['kode'])/100));
+                $item += $setNilai;
+                $set[] = $setNilai;
             }
+            $this->perkalianBobot[] = $set;
             array_push($data, $item);
             $this->alternatif[$keyAlternatif]['preferensi'] = $item;
         }
