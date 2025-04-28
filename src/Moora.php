@@ -88,7 +88,7 @@ class Moora
         return $data;
     }
 
-    private function cekJenis(string $kode): int
+    private function cekJenis(string $kode)
     {
         foreach ($this->kriteria as $keyKriteria => $kriteria) {
             if($kriteria['kode']==$kode) return $kriteria['type']=='Benefits' ? $kriteria['bobot'] : -$kriteria['bobot'];
