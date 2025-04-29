@@ -4,15 +4,7 @@ namespace ajn\dss_library;
 
 class Vikor
 {
-    protected $limit;
-    public $kriteria;
-    public $alternatif;
-    public $matriksKeputusan;
-    public $matriksNormalisasi;
-
-
-
-    public $normalisasibobot;
+    public $hasil;
 
     public function __construct($kriteria, $alternatif, $limit)
     {
@@ -108,11 +100,6 @@ class Vikor
         asort($Q);
 
         // Tampilkan hasil
-        echo "<h3>Ranking VIKOR:</h3>";
-        $rank = 1;
-        foreach ($Q as $nama => $qi) {
-            echo "Rank {$rank}: {$nama} (Q = " . round($qi, 4) . ")<br>";
-            $rank++;
-        }
+        $this->hasil= $Q;
     }
 }
